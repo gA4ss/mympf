@@ -5,7 +5,7 @@ project(mympf VERSION 1.0)
 # turn on -03 for best performance
 # add_definitions(-std=c++11 -g -O0 -Wunused-variable)
 # add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)
-add_definitions(-std=c++11 -g -O0 -DDEBUG -DDISABLE_OPTIMIZE -Wunused-variable)
+add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)
 # add_definitions(-std=c++11 -O3 -Wunused-variable)
 
 set(CXX_FLAGS "-Wall")
@@ -32,7 +32,7 @@ link_directories(/usr/local/lib)
 #
 # Mympf public header file
 #
-set(MYMPZ_HEADERS
+set(MYMPF_HEADERS
   ${SRC_DIRECTORY}/mympf.h
   ${SRC_DIRECTORY}/compile.h
   ${SRC_DIRECTORY}/exception.h
@@ -56,7 +56,7 @@ add_library(${PROJECT_NAME} STATIC
   ${SRC_DIRECTORY}/const.cc
   ${SRC_DIRECTORY}/debug.cc
 )
-target_link_libraries(${PROJECT_NAME} mympz)
+target_link_libraries(${PROJECT_NAME} mympz my)
 
 #
 # Test Build
@@ -73,8 +73,10 @@ add_subdirectory(test)
 # Enable Test
 #
 enable_testing()
-# add_test(NAME test_create COMMAND test_create)
-# set_tests_properties(test_create PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
+add_test(NAME test_create COMMAND test_create)
+set_tests_properties(test_create PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
+add_test(NAME test_merge COMMAND test_merge)
+set_tests_properties(test_merge PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
 
 #
 # Auto Test
@@ -88,5 +90,5 @@ endif(BUILD_TEST)
 #
 # Install Set
 #
-INSTALL(TARGETS mympz ARCHIVE DESTINATION lib)
-INSTALL(FILES ${MYMPZ_HEADERS} DESTINATION include/mympf)
+INSTALL(TARGETS mympf ARCHIVE DESTINATION lib)
+INSTALL(FILES ${MYMPF_HEADERS} DESTINATION include/mympf)
