@@ -33,5 +33,12 @@ link_directories(/usr/local/lib)
 #
 add_executable(test_create ${SRC_DIRECTORY}/test_create.cc)
 target_link_libraries(test_create mympf gtest pthread)
-add_executable(test_merge ${SRC_DIRECTORY}/test_merge.cc)
-target_link_libraries(test_merge mympf gtest pthread)
+add_executable(test_addsub ${SRC_DIRECTORY}/test_addsub.cc)
+target_link_libraries(test_addsub mympf gtest pthread)
+
+
+#
+# Misc Test
+#
+add_executable(test_misc ${SRC_DIRECTORY}/misc/test_misc.cc)
+target_link_libraries(test_misc mympf)

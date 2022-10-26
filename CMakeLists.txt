@@ -75,8 +75,8 @@ add_subdirectory(test)
 enable_testing()
 add_test(NAME test_create COMMAND test_create)
 set_tests_properties(test_create PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
-add_test(NAME test_merge COMMAND test_merge)
-set_tests_properties(test_merge PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
+add_test(NAME test_addsub COMMAND test_addsub)
+set_tests_properties(test_addsub PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
 
 #
 # Auto Test

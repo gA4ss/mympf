@@ -41,6 +41,8 @@ namespace mympf
   void shrink_integer_zero(float_t &x);
   void shrink_decimal_zero(float_t &x);
   mympz::bignum_t merge(const float_t &x);
+  void expand_decimal(float_t &x, size_t n);
+  size_t expand_decimal_word(mympz::unit_t &w, mympz::unit_t m);
 } // namespace mympf
 
 #endif // MYMPF_H_

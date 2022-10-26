@@ -95,9 +95,38 @@ namespace mympf
     }
   }
 
-  void expand_word(mympz::unit_t &w, const mympz::unit_t &m)
+  size_t expand_decimal_word(mympz::unit_t &w, mympz::unit_t m)
   {
+    // 保证 w < m
+    if (w == m) return w;
+    if (w > m) {
+      // 应该抛出异常
+      return w;
+    }
+    size_t i = 0, j = 0;
+    mympz::unit_t u = w, v = m;
+    while (1) {
+      
+      if (u > 10) {
+        u = u / 10;
+        i++;
+      }
+
+      if (v > 10) {
+        v = v / 10;
+        j++;
+      } else {
+        break;
+      }
+    }
+
+    size_t k = j - i;
     
+    while(k--) {
+      w *= 10;
+    }
+
+    return (j - i);
   }
 
 } // namespace mympf
