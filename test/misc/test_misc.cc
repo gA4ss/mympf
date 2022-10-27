@@ -43,8 +43,17 @@ void test_expand_decimal_word() {
   std::cout << "m = " << m << std::endl;
 }
 
+void test_expand_decimal() {
+  mympz::bignum_t x = mympz::create("8542543254353256547321648");
+  mympz::bignum_t y = mympz::create("12321431542748931764381648963728542543254353256547321648");
+  size_t k = expand_decimal(x, y);
+  std::cout << "k = " << k << std::endl;
+  std::cout << "x = " << mympz::print_string(x) << std::endl;
+  std::cout << "y = " << mympz::print_string(y) << std::endl;
+}
+
 int main(int argc, char* argv[]) {
-  // test_merge();
-  test_expand_decimal_word();
+  test_merge();
+  // test_expand_decimal();
   return 0;
 }

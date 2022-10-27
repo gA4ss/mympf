@@ -46,6 +46,7 @@ add_library(${PROJECT_NAME} STATIC
   ${SRC_DIRECTORY}/create.cc
   ${SRC_DIRECTORY}/print.cc
   ${SRC_DIRECTORY}/add.cc
+  ${SRC_DIRECTORY}/sub.cc
   ${SRC_DIRECTORY}/mul.cc
   ${SRC_DIRECTORY}/sqr.cc
   ${SRC_DIRECTORY}/div.cc

@@ -20,6 +20,8 @@ namespace mympf
     mympz::bignum_t decimal_part;
 
     int neg() const { return integer_part.neg; }
+    void set_neg(int neg=0) { integer_part.neg = neg; }
+
   } float_t;
 
   float_t create(std::string str, bool hex = false);
@@ -27,12 +29,15 @@ namespace mympf
   float_t create(const mympz::number_t &integer, const mympz::number_t &decimal, int neg = 0);
 
   float_t add(const float_t &x, const float_t &y);
+  float_t uadd(const float_t &x, const float_t &y);
   float_t sub(const float_t &x, const float_t &y);
+  float_t usub(const float_t &x, const float_t &y);
   float_t mul(const float_t &x, const float_t &y);
   float_t div(const float_t &x, const float_t &y);
   float_t mod(const float_t &x, const float_t &y);
   float_t exp(const float_t &x, const size_t p);
   int cmp(const float_t &x, const float_t &y);
+  int ucmp(const float_t &x, const float_t &y);
   float_t sqr(const float_t &x);
 
   std::string print_string(const float_t &x, bool hex = false, bool low_case = false);
@@ -41,8 +46,8 @@ namespace mympf
   void shrink_integer_zero(float_t &x);
   void shrink_decimal_zero(float_t &x);
   mympz::bignum_t merge(const float_t &x);
-  void expand_decimal(float_t &x, size_t n);
   size_t expand_decimal_word(mympz::unit_t &w, mympz::unit_t m);
+  size_t expand_decimal(mympz::bignum_t &x, const mympz::bignum_t &y);
 } // namespace mympf
 
 #endif // MYMPF_H_
