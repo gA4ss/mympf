@@ -7,21 +7,20 @@
 
 using namespace mympf;
 
-TEST(Mympf, Create) {
-  mympf::float_t x;
-  std::string x_str;
+TEST(Mympf, Cmp) {
+  mympf::float_t x, y;
 
   x = create("1.0");
-  x_str = print_string(x);
-  EXPECT_STREQ(x_str.c_str(), "1.0");
-
-  x = create("3.1415926");
-  x_str = print_string(x);
-  EXPECT_STREQ(x_str.c_str(), "3.1415926");
+  y = create("3.1415926");
+  EXPECT_EQ(cmp(x, y), -1);
 
   x = create("-0.618");
-  x_str = print_string(x);
-  EXPECT_STREQ(x_str.c_str(), "-0.618");
+  y = create("-3.1415926");
+  EXPECT_EQ(cmp(x, y), 1);
+
+  x = create("4.3");
+  y = create("3.1");
+  EXPECT_EQ(cmp(x, y), 1);
 }
 
 int main(int argc, char* argv[]) {

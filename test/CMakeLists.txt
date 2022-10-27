@@ -35,7 +35,8 @@ add_executable(test_create ${SRC_DIRECTORY}/test_create.cc)
 target_link_libraries(test_create mympf gtest pthread)
 add_executable(test_addsub ${SRC_DIRECTORY}/test_addsub.cc)
 target_link_libraries(test_addsub mympf gtest pthread)
-
+add_executable(test_cmp ${SRC_DIRECTORY}/test_cmp.cc)
+target_link_libraries(test_cmp mympf gtest pthread)
 
 #
 # Misc Test

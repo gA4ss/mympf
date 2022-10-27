@@ -3,46 +3,60 @@
 namespace mympf
 {
 
-  float_t create(std::string str, bool hex)
-  {
-    float_t r;
+#define __earse_char(s, c)                               \
+  {                                                      \
+    (s).erase(                                           \
+        std::remove_if((s).begin(), (s).end(),           \
+                       [](char x) { return (c) == x; }), \
+        (s).end());                                      \
+  }
 
-    std::size_t found = str.find('.');
+  static size_t __count_precision_from_string(const std::string &str)
+  {
+    size_t precision = 0;
+
+    //
+    // 去除负号
+    //
+    std::string s = str;
+    if (str[0] == '-') {
+      s = str.substr(1);
+    }
+
+    std::size_t found = s.find('.');
     if (found == 0)
     {
-      r.integer_part.neg = 0;
-      r.integer_part.number.push_back(0);
-      r.decimal_part = mympz::create(str.substr(1), hex);
+      precision = s.length() - 1;
     }
-    else if ((found == std::string::npos) ||
-             (found == str.length() - 1))
+    else if ((found == std::string::npos) || (found == str.length() - 1))
     {
-      r.decimal_part.number.push_back(0);
-      r.integer_part = mympz::create(str.substr(0, found), hex);
+      precision = 0;
     }
     else
     {
-      r.integer_part = mympz::create(str.substr(0, found), hex);
-      r.decimal_part = mympz::create(str.substr(found + 1), hex);
+      s = s.substr(found + 1);
+      precision = s.length();
     }
+    return precision;
+  }
+
+  float_t create(std::string str)
+  {
+    float_t r;
+
+    __earse_char(str, ' ');
+    r.precision = __count_precision_from_string(str);
+    __earse_char(str, '.');
+    r.number = mympz::create(str);
 
     return r;
   }
 
-  float_t create(const mympz::bignum_t &integer, const mympz::bignum_t &decimal)
+  float_t create(const mympz::bignum_t &number, size_t precision)
   {
     float_t r;
-    r.integer_part = integer;
-    r.decimal_part = decimal;
-    return r;
-  }
-
-  float_t create(const mympz::number_t &integer, const mympz::number_t &decimal, int neg)
-  {
-    float_t r;
-    r.integer_part.number = integer;
-    r.decimal_part.number = decimal;
-    r.integer_part.neg = neg;
+    r.number = number;
+    r.precision = precision;
     return r;
   }
 

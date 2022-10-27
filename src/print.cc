@@ -3,18 +3,33 @@
 namespace mympf
 {
 
-  std::string print_string(const float_t &x, bool hex, bool low_case)
+  std::string print_string(const float_t &x)
   {
-    if (x.integer_part.number.empty() || x.decimal_part.number.empty())
+    if (x.number.number.empty())
       return "";
 
-    std::string str = mympz::print_string(x.integer_part, hex, low_case);
-    if (str == "0") {
-      if (x.neg())
-        str = "-0";
+    std::string str = "";
+    if (x.precision)
+    {
+      str = mympz::print_string(x.number);
+      str.insert(str.end() - x.precision, '.');
     }
-    str += ".";
-    str += mympz::print_string(x.decimal_part, hex, low_case);
+    else
+    {
+      str = mympz::print_string(x.number);
+      str += ".0";
+    }
+
+    // 整理一下字符串
+    size_t found = str.find('.');
+    if (found == 0)
+    {
+      str = '0' + str;
+    }
+    else if ((found == 1) && (str[0] == '-'))
+    {
+      str.insert(str.begin() + 1, '0');
+    }
 
     return str;
   }
