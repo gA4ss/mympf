@@ -131,4 +131,22 @@ namespace mympf
     return (j - i);
   }
 
+  size_t expand_precision(mympz::bignum_t &x, size_t target_precision)
+  {
+    size_t n = bn_size(x);
+    if (n >= target_precision)
+    {
+      return 0;
+    }
+
+    n = target_precision - n;
+
+    while (n--)
+    {
+      x = mympz::mul(x, mympz::const_10);
+    }
+
+    return n;
+  }
+
 } // namespace mympf

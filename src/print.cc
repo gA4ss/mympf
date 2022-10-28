@@ -16,8 +16,12 @@ namespace mympf
     }
     else
     {
+      //
+      // 不存在精度，则后末尾加0进行输出。
+      //
       str = mympz::print_string(x.number);
       str += ".0";
+      return str;
     }
 
     // 整理一下字符串

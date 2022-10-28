@@ -11,6 +11,14 @@ TEST(Mympf, Create) {
   mympf::float_t x;
   std::string x_str;
 
+  x = create("0.000000000000000000000000000000001");
+  x_str = print_string(x);
+  EXPECT_STREQ(x_str.c_str(), "0.000000000000000000000000000000001");
+
+  x = create("-0.000000000000000000000000000000002");
+  x_str = print_string(x);
+  EXPECT_STREQ(x_str.c_str(), "-0.000000000000000000000000000000002");
+
   x = create("1.0");
   x_str = print_string(x);
   EXPECT_STREQ(x_str.c_str(), "1.0");
