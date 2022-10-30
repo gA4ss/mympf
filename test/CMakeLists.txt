@@ -37,6 +37,12 @@ add_executable(test_addsub ${SRC_DIRECTORY}/test_addsub.cc)
 target_link_libraries(test_addsub mympf gtest pthread)
 add_executable(test_cmp ${SRC_DIRECTORY}/test_cmp.cc)
 target_link_libraries(test_cmp mympf gtest pthread)
+add_executable(test_mul ${SRC_DIRECTORY}/test_mul.cc)
+target_link_libraries(test_mul mympf gtest pthread)
+add_executable(test_exp ${SRC_DIRECTORY}/test_exp.cc)
+target_link_libraries(test_exp mympf gtest pthread)
+add_executable(test_div ${SRC_DIRECTORY}/test_div.cc)
+target_link_libraries(test_div mympf gtest pthread)
 
 #
 # Misc Test

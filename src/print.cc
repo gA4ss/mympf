@@ -12,7 +12,26 @@ namespace mympf
     if (x.precision)
     {
       str = mympz::print_string(x.number);
-      str.insert(str.end() - x.precision, '.');
+      if (str[0] == '-')
+      {
+        str.erase(str.begin());
+      }
+
+      if (x.precision < str.length())
+      {
+        str.insert(str.end() - x.precision, '.');
+      }
+      else if (x.precision == str.length())
+      {
+        str = std::string("0.") + str;
+      }
+      else
+      {
+        size_t c = x.precision - str.length() + 1;
+        std::string zs = std::string(c, '0');
+        str = zs + str;
+        str.insert(str.begin() + 1, '.');
+      }
     }
     else
     {
@@ -24,16 +43,8 @@ namespace mympf
       return str;
     }
 
-    // 整理一下字符串
-    size_t found = str.find('.');
-    if (found == 0)
-    {
-      str = '0' + str;
-    }
-    else if ((found == 1) && (str[0] == '-'))
-    {
-      str.insert(str.begin() + 1, '0');
-    }
+    if (x.neg())
+      str.insert(str.begin(), '-');
 
     return str;
   }

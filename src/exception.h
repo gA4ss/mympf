@@ -9,6 +9,12 @@ namespace mympf
                           __FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); \
   }
 
+#define mympf_exponent_is_too_big(e)                                                              \
+  {                                                                                               \
+    throw my::MyException("<mympf>",                                                              \
+                          __FILE__, __LINE__, __FUNCTION__, "%s", "exponent " #e " is too big."); \
+  }
+
 #define unknown_mympf_exception()                                                                   \
   {                                                                                                 \
     throw my::MyException("<mympf> Unknown Exception", __FILE__, __LINE__, __FUNCTION__, "%s", ""); \

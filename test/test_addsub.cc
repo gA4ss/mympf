@@ -35,7 +35,7 @@ TEST(Mympf, uSub) {
   z = usub(y,x);
   z_str = print_string(z);
   // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "5544.0");
+  EXPECT_STREQ(z_str.c_str(), "5544.0000000000000");
 
   x = create("3.832");
   y = create("5.43");

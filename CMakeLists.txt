@@ -80,6 +80,12 @@ add_test(NAME test_addsub COMMAND test_addsub)
 set_tests_properties(test_addsub PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
 add_test(NAME test_cmp COMMAND test_cmp)
 set_tests_properties(test_cmp PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
+add_test(NAME test_mul COMMAND test_mul)
+set_tests_properties(test_mul PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
+add_test(NAME test_exp COMMAND test_exp)
+set_tests_properties(test_exp PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
+add_test(NAME test_div COMMAND test_div)
+set_tests_properties(test_div PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
 
 #
 # Auto Test

@@ -39,15 +39,17 @@ namespace mympf
     float_t z;
     mympz::bignum_t xn = x.number;
     mympz::bignum_t yn = y.number;
-    // if (ucmp(xn, yn) >= 0)
-    // {
 
-    // }
-    // else
-    // {
+    if (x.precision > y.precision)
+    {
+      expand_precision(yn, y.precision, x.precision);
+    }
+    else if (x.precision < y.precision)
+    {
+      expand_precision(xn, x.precision, y.precision);
+    }
 
-    // }
-    // z.number = mympz::uadd(, y.number);
+    z.number = mympz::uadd(xn, yn);
     z.precision = x.precision > y.precision ? x.precision : y.precision;
     return z;
   }

@@ -3,6 +3,19 @@
 namespace mympf
 {
 
+  size_t count_digits(const mympz::bignum_t &x)
+  {
+    size_t c = 0;
+    mympz::bignum_t y = x;
+    while (mympz::ucmp(y, mympz::const_10) >= 0)
+    {
+      y = mympz::idiv(y, mympz::const_10);
+      c++;
+    }
+    c++;
+    return c;
+  }
+
   size_t shrink_zero(mympz::bignum_t &x, bool reverse)
   {
     if (x.number.empty())
@@ -44,6 +57,23 @@ namespace mympf
       }
     }
     return ret;
+  }
+
+  size_t shrink_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision)
+  {
+    if (current_precision <= target_precision)
+    {
+      return 0;
+    }
+
+    size_t n =  current_precision - target_precision;
+
+    while (n--)
+    {
+      x = mympz::idiv(x, mympz::const_10);
+    }
+
+    return (current_precision - target_precision);
   }
 
   size_t expand_word(mympz::unit_t &w, mympz::unit_t m)
@@ -100,19 +130,18 @@ namespace mympf
     }
     size_t i = 0, j = 0;
     mympz::bignum_t u = x, v = y;
-    mympz::bignum_t t = mympz::create(10);
 
     while (1)
     {
-      if (mympz::cmp(u, t) > 0)
+      if (mympz::cmp(u, mympz::const_10) > 0)
       {
-        u = mympz::idiv(u, t);
+        u = mympz::idiv(u, mympz::const_10);
         i++;
       }
 
-      if (mympz::cmp(v, t) > 0)
+      if (mympz::cmp(v, mympz::const_10) > 0)
       {
-        v = mympz::idiv(v, t);
+        v = mympz::idiv(v, mympz::const_10);
         j++;
       }
       else
@@ -125,28 +154,27 @@ namespace mympf
 
     while (k--)
     {
-      x = mympz::mul(x, t);
+      x = mympz::mul(x, mympz::const_10);
     }
 
     return (j - i);
   }
 
-  size_t expand_precision(mympz::bignum_t &x, size_t target_precision)
+  size_t expand_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision)
   {
-    size_t n = bn_size(x);
-    if (n >= target_precision)
+    if (current_precision >= target_precision)
     {
       return 0;
     }
 
-    n = target_precision - n;
+    size_t n = target_precision - current_precision;
 
     while (n--)
     {
       x = mympz::mul(x, mympz::const_10);
     }
 
-    return n;
+    return (target_precision - current_precision);
   }
 
 } // namespace mympf

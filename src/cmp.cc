@@ -9,11 +9,11 @@ namespace mympf
     mympz::bignum_t _y = y.number;
     if (x.precision > y.precision)
     {
-      expand_precision(_y, x.precision);
+      expand_precision(_y, y.precision, x.precision);
     }
     else if (x.precision < y.precision)
     {
-      expand_precision(_x, y.precision);
+      expand_precision(_x, x.precision, y.precision);
     }
 
     return mympz::cmp(_x, _y);
@@ -25,11 +25,11 @@ namespace mympf
     mympz::bignum_t _y = y.number;
     if (x.precision > y.precision)
     {
-      expand_precision(_y, x.precision);
+      expand_precision(_y, y.precision, x.precision);
     }
     else if (x.precision < y.precision)
     {
-      expand_precision(_x, y.precision);
+      expand_precision(_x, x.precision, y.precision);
     }
 
     return mympz::ucmp(_x, _y);

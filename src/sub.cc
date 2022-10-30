@@ -47,7 +47,19 @@ namespace mympf
   float_t usub(const float_t &x, const float_t &y)
   {
     float_t z;
-    z.number = mympz::usub(x.number, y.number);
+    mympz::bignum_t xn = x.number;
+    mympz::bignum_t yn = y.number;
+
+    if (x.precision > y.precision)
+    {
+      expand_precision(yn, y.precision, x.precision);
+    }
+    else if (x.precision < y.precision)
+    {
+      expand_precision(xn, x.precision, y.precision);
+    }
+
+    z.number = mympz::usub(xn, yn);
     z.precision = x.precision > y.precision ? x.precision : y.precision;
     return z;
   }
