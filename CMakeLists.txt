@@ -86,6 +86,8 @@ add_test(NAME test_exp COMMAND test_exp)
 set_tests_properties(test_exp PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
 add_test(NAME test_div COMMAND test_div)
 set_tests_properties(test_div PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
+add_test(NAME test_mod COMMAND test_mod)
+set_tests_properties(test_mod PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED")
 
 #
 # Auto Test

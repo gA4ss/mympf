@@ -43,6 +43,8 @@ add_executable(test_exp ${SRC_DIRECTORY}/test_exp.cc)
 target_link_libraries(test_exp mympf gtest pthread)
 add_executable(test_div ${SRC_DIRECTORY}/test_div.cc)
 target_link_libraries(test_div mympf gtest pthread)
+add_executable(test_mod ${SRC_DIRECTORY}/test_mod.cc)
+target_link_libraries(test_mod mympf gtest pthread)
 
 #
 # Misc Test

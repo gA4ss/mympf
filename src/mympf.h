@@ -36,6 +36,7 @@ namespace mympf
   float_t sub(const float_t &x, const float_t &y);
   float_t usub(const float_t &x, const float_t &y);
   float_t mul(const float_t &x, const float_t &y);
+  float_t idiv(const float_t &x, const float_t &y);
   float_t div(const float_t &x, const float_t &y, size_t precision = 16);
   float_t mod(const float_t &x, const float_t &y);
 

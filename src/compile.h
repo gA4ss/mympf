@@ -3,6 +3,13 @@
 
 namespace mympf
 {
+
+#if defined(DEBUG)
+
+// #define ENABLE_DEBUG_INFO
+
+#endif
+
 } // namespace mympf
 
 #endif // MYMPF_COMPILE_H_

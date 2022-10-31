@@ -7,40 +7,7 @@
 
 using namespace mympf;
 
-TEST(Mympf, IDiv) {
-  mympf::float_t x, y, z;
-  std::string z_str;
-
-  x = create("5.2");
-  y = create("4.3");
-  z = idiv(x, y);
-  z_str = print_string(z);
-  // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "1.0");
-
-  x = create("-5.2");
-  y = create("-4.3");
-  z = idiv(x, y);
-  z_str = print_string(z);
-  // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "1.0");
-
-  x = create("-5.2");
-  y = create("4.3");
-  z = idiv(x, y);
-  z_str = print_string(z);
-  // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "-1.0");
-
-  x = create("5.2");
-  y = create("-4.3");
-  z = idiv(x, y);
-  z_str = print_string(z);
-  // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "-1.0");
-}
-
-TEST(Mympf, Div) {
+TEST(Mympf, Mod) {
   mympf::float_t x, y, z;
   std::string z_str;
 
