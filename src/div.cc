@@ -99,6 +99,7 @@ namespace mympf
     }
     result = mympz::uadd(result, q);
     z.number = result;
+    z.set_neg(x.neg() ^ y.neg());
     return z;
   }
 

@@ -19,7 +19,8 @@ namespace mympf
     // 去除负号
     //
     std::string s = str;
-    if (str[0] == '-') {
+    if (str[0] == '-')
+    {
       s = str.substr(1);
     }
 
@@ -38,6 +39,14 @@ namespace mympf
       precision = s.length();
     }
     return precision;
+  }
+
+  float_t create(mympz::unit_t word, size_t precision, int neg)
+  {
+    float_t r;
+    r.number = mympz::create(word, neg);
+    r.precision = precision;
+    return r;
   }
 
   float_t create(std::string str)

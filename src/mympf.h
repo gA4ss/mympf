@@ -19,17 +19,26 @@ namespace mympf
    * 这个精度应该是够用的。暂定如此，如果需要扩展成无限精度，可以将size_t precision的类型与运算换成，
    * mympz::bignum_t类型即可。
    */
-  typedef struct
+  typedef struct __float_t
   {
     mympz::bignum_t number;
     size_t precision;
 
     int neg() const { return number.neg; }
     void set_neg(int neg = 0) { number.neg = neg; }
+
   } float_t;
 
+  float_t create(mympz::unit_t word, size_t precision, int neg = 0);
   float_t create(std::string str);
   float_t create(const mympz::bignum_t &number, size_t precision);
+
+  float_t integer_part(const float_t &x);
+  float_t decimal_part(const float_t &x);
+
+  float_t floor(const float_t &x);
+  float_t ceil(const float_t &x);
+  float_t round(const float_t &x, size_t precision = 0);
 
   float_t add(const float_t &x, const float_t &y);
   float_t uadd(const float_t &x, const float_t &y);
@@ -38,7 +47,7 @@ namespace mympf
   float_t mul(const float_t &x, const float_t &y);
   float_t idiv(const float_t &x, const float_t &y);
   float_t div(const float_t &x, const float_t &y, size_t precision = 16);
-  float_t mod(const float_t &x, const float_t &y);
+  float_t mod(const float_t &x, const float_t &y, size_t precision = 16);
 
   /*
    * 指数运算虽然提供了bignum_t的指数版本，可是目前通常最大还是2^64次方来运算，因为已经足够大了。
@@ -56,10 +65,16 @@ namespace mympf
   //
   size_t count_digits(const mympz::bignum_t &x);
   size_t shrink_zero(mympz::bignum_t &x, bool reverse = true);
+  size_t shrink_precision(float_t &x, size_t target_precision);
   size_t shrink_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision);
   size_t expand_word(mympz::unit_t &w, mympz::unit_t m);
   size_t expand_number(mympz::bignum_t &x, const mympz::bignum_t &y);
   size_t expand_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision);
+
+  extern float_t const_null;
+  extern float_t const_0;
+  extern float_t const_1;
+  extern float_t const_10;
 
 } // namespace mympf
 

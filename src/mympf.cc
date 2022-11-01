@@ -76,6 +76,13 @@ namespace mympf
     return (current_precision - target_precision);
   }
 
+  size_t shrink_precision(float_t &x, size_t target_precision)
+  {
+    size_t s = shrink_precision(x.number, x.precision, target_precision);
+    x.precision = target_precision;
+    return s;
+  }
+
   size_t expand_word(mympz::unit_t &w, mympz::unit_t m)
   {
     // 保证 w < m
@@ -175,6 +182,23 @@ namespace mympf
     }
 
     return (target_precision - current_precision);
+  }
+
+  float_t integer_part(const float_t &x)
+  {
+    float_t y = x;
+    shrink_precision(y, 0);
+    y.set_neg(x.neg());
+    return y;
+  }
+
+  float_t decimal_part(const float_t &x)
+  {
+    float_t y = x;
+    shrink_precision(y, 0);
+    y = usub(x, y);
+    y.precision = x.precision;
+    return y;
   }
 
 } // namespace mympf
