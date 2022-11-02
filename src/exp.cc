@@ -3,7 +3,7 @@
 namespace mympf
 {
 
-  static float_t __exp(const float_t &x, const mympz::bignum_t &p)
+  float_t exp(const float_t &x, const mympz::bignum_t &p)
   {
     float_t y;
 
@@ -20,7 +20,12 @@ namespace mympf
 
   float_t exp(const float_t &x, const size_t p)
   {
-    return __exp(x, mympz::create(p));
+    return exp(x, mympz::create(p));
+  }
+
+  float_t exp(const float_t &x, const float_t &p)
+  {
+    return exp(x, integer_part(p).number);
   }
 
 } // namespace mympf

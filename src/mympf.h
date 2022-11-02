@@ -51,8 +51,10 @@ namespace mympf
 
   /*
    * 指数运算虽然提供了bignum_t的指数版本，可是目前通常最大还是2^64次方来运算，因为已经足够大了。
+   * 这里的`const float_t &p`仅取整数部分，忽略小数部分。
    */
-  // float_t exp(const float_t &x, const mympz::bignum_t &p);
+  float_t exp(const float_t &x, const float_t &p);
+  float_t exp(const float_t &x, const mympz::bignum_t &p);
   float_t exp(const float_t &x, const size_t p);
   int cmp(const float_t &x, const float_t &y);
   int ucmp(const float_t &x, const float_t &y);
