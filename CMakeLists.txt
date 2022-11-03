@@ -3,10 +3,15 @@ project(mympf VERSION 1.0)
 
 # -g allows for gdb debugging
 # turn on -03 for best performance
-# add_definitions(-std=c++11 -g -O0 -Wunused-variable)
 # add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)
 # add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)
+if(DEBUG)
+message(STATUS "compile debug version.")
+add_definitions(-std=c++11 -g -O0 -Wunused-variable)
+else()
+message(STATUS "compile release version.")
 add_definitions(-std=c++11 -O3 -Wunused-variable)
+endif(DEBUG)
 
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS "${CXX_FLAGS}")
@@ -54,7 +59,7 @@ add_library(${PROJECT_NAME} STATIC
   ${SRC_DIRECTORY}/exp.cc
   ${SRC_DIRECTORY}/cmp.cc
   ${SRC_DIRECTORY}/mympf.cc
-  ${SRC_DIRECTORY}/const.cc
+  ${SRC_DIRECTORY}/constant.cc
   ${SRC_DIRECTORY}/debug.cc
   ${SRC_DIRECTORY}/floor.cc
   ${SRC_DIRECTORY}/ceil.cc
