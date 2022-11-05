@@ -124,9 +124,37 @@ void test_round()
   std::cout << "x = " << mympf::print_string(x) << std::endl;
 }
 
+void test_shrink()
+{
+  mympf::float_t x = mympf::create("312.12340000000");
+  mympf::shrink_zero_precision(x);
+  std::cout << "x = " << mympf::print_string(x) << std::endl
+            << "x.precision = " << x.precision << std::endl;
+
+  x = mympf::create("312.0");
+  mympf::shrink_zero_precision(x);
+  std::cout << "x = " << mympf::print_string(x) << std::endl
+            << "x.precision = " << x.precision << std::endl;
+
+  x = mympf::create("3121");
+  mympf::shrink_zero_precision(x);
+  std::cout << "x = " << mympf::print_string(x) << std::endl
+            << "x.precision = " << x.precision << std::endl;
+
+  x = mympf::create("0.123213000000");
+  mympf::shrink_zero_precision(x);
+  std::cout << "x = " << mympf::print_string(x) << std::endl
+            << "x.precision = " << x.precision << std::endl;
+
+  x = mympf::create("0.0000");
+  mympf::shrink_zero_precision(x);
+  std::cout << "x = " << mympf::print_string(x) << std::endl
+            << "x.precision = " << x.precision << std::endl;
+}
+
 int main(int argc, char *argv[])
 {
-  test_round();
+  test_shrink();
   // test_expand_decimal();
   return 0;
 }

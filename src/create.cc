@@ -46,6 +46,7 @@ namespace mympf
     float_t r;
     r.number = mympz::create(word, neg);
     r.precision = precision;
+    shrink_zero_precision(r);
     return r;
   }
 
@@ -57,7 +58,7 @@ namespace mympf
     r.precision = __count_precision_from_string(str);
     __earse_char(str, '.');
     r.number = mympz::create(str);
-
+    shrink_zero_precision(r);
     return r;
   }
 
@@ -66,6 +67,7 @@ namespace mympf
     float_t r;
     r.number = number;
     r.precision = precision;
+    shrink_zero_precision(r);
     return r;
   }
 

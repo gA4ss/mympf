@@ -70,6 +70,7 @@ namespace mympf
   size_t shrink_zero(mympz::bignum_t &x, bool reverse = true);
   size_t shrink_precision(float_t &x, size_t target_precision);
   size_t shrink_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision);
+  size_t shrink_zero_precision(float_t &x);
   size_t expand_word(mympz::unit_t &w, mympz::unit_t m);
   size_t expand_number(mympz::bignum_t &x, const mympz::bignum_t &y);
   size_t expand_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision);

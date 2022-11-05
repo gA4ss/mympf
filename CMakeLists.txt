@@ -5,7 +5,7 @@ project(mympf VERSION 1.0)
 # turn on -03 for best performance
 # add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)
 # add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)
-set(DEBUG TRUE)
+# set(DEBUG TRUE)
 if(DEBUG)
 message(STATUS "compile debug version.")
 add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)

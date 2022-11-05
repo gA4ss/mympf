@@ -33,7 +33,7 @@ TEST(Mympf, Exp) {
   z = exp(x,3);
   z_str = print_string(z);
   // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "7797729087.000");
+  EXPECT_STREQ(z_str.c_str(), "7797729087.0");
 }
 
 int main(int argc, char* argv[]) {

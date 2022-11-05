@@ -207,4 +207,29 @@ namespace mympf
     return y;
   }
 
+  size_t shrink_zero_precision(float_t &x)
+  {
+    if ((!x.precision) || (mympz::is_zero(x.number)))
+      return 0;
+
+    size_t s = x.precision, p = x.precision;
+    mympz::bignum_t y = x.number;
+    mympz::division_result_t qr;
+
+    while(s)
+    {
+      qr = mympz::div(y, mympz::const_10);
+      if (!mympz::is_zero(qr.second))
+      {
+        break;
+      }
+      y = qr.first;
+      s--;
+    }
+    
+    x.number = y;
+    x.precision = s;
+    return (p - s);
+  }
+
 } // namespace mympf

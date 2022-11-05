@@ -28,6 +28,7 @@ namespace mympf
     z.number = mympz::mul(xn, yn);
     z.precision = z_precision;
     z.set_neg(x.neg() ^ y.neg());
+    shrink_zero_precision(z);
     return z;
   }
 

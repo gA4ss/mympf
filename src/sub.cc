@@ -61,6 +61,7 @@ namespace mympf
 
     z.number = mympz::usub(xn, yn);
     z.precision = x.precision > y.precision ? x.precision : y.precision;
+    shrink_zero_precision(z);
     return z;
   }
 

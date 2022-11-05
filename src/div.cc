@@ -108,6 +108,7 @@ namespace mympf
     result = mympz::uadd(result, q);
     z.number = result;
     z.set_neg(x.neg() ^ y.neg());
+    shrink_zero_precision(z);
     return z;
   }
 
@@ -120,6 +121,7 @@ namespace mympf
     shrink_precision(_y, y.precision, 0);
     z.number = mympz::idiv(_x, _y);
     z.precision = 0;
+    shrink_zero_precision(z);
     return z;
   }
 

@@ -16,21 +16,21 @@ TEST(Mympf, Mul) {
   z = mul(x, y);
   z_str = print_string(z);
   // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "-288.435000");
+  EXPECT_STREQ(z_str.c_str(), "-288.435");
 
   x = create("3.832");
   y = create("-5.43");
   z = mul(x,y);
   z_str = print_string(z);
   // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "-20.807760");
+  EXPECT_STREQ(z_str.c_str(), "-20.80776");
 
   x = create("-1983.1210");
   y = create("-1993.0613");
   z = mul(x,y);
   z_str = print_string(z);
   // std::cout << "z = " << z_str << std::endl;
-  EXPECT_STREQ(z_str.c_str(), "3952481.71831730");
+  EXPECT_STREQ(z_str.c_str(), "3952481.7183173");
 
   x = create("1983");
   y = create("1993");
