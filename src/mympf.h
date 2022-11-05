@@ -75,6 +75,7 @@ namespace mympf
   size_t expand_number(mympz::bignum_t &x, const mympz::bignum_t &y);
   size_t expand_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision);
 
+  void init();
   extern float_t const_null;
   extern float_t const_0;
   extern float_t const_1;
