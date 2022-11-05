@@ -64,6 +64,12 @@ TEST(Mympf, Div) {
   z_str = print_string(z);
   // std::cout << "z = " << z_str << std::endl;
   EXPECT_STREQ(z_str.c_str(), "0.99498243853487205");
+
+  x = create("2.09");
+  y = create("2.0");
+  z = div(x, y);
+  z_str = print_string(z);
+  EXPECT_STREQ(z_str.c_str(), "1.045");
 }
 
 int main(int argc, char* argv[]) {

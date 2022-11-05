@@ -3,6 +3,12 @@
 namespace mympf
 {
 
+  __float_t::__float_t()
+  {
+    init_bignum(number);
+    precision = 0;
+  }
+
   size_t count_digits(const mympz::bignum_t &x)
   {
     size_t c = 0;

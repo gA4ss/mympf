@@ -21,6 +21,7 @@ namespace mympf
    */
   typedef struct __float_t
   {
+    __float_t();
     mympz::bignum_t number;
     size_t precision;
 
