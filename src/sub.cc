@@ -17,26 +17,18 @@ namespace mympf
       int neg = x.neg();
       if (ucmp(x, y) >= 0)
       {
-        if (neg == 0)
+        z = usub(x, y);
+        if (neg)
         {
-          z = usub(x, y);
-        }
-        else
-        {
-          z = uadd(x, y);
           z.set_neg(1);
         }
       }
       else
       {
-        if (neg == 0)
+        z = usub(y, x);
+        if (!neg)
         {
-          z = usub(y, x);
           z.set_neg(1);
-        }
-        else
-        {
-          z = usub(y, x);
         }
       }
     }

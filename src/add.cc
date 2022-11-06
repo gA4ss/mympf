@@ -11,18 +11,12 @@ namespace mympf
       if (ucmp(x, y) >= 0)
       {
         z = usub(x, y);
-        if (x.neg())
-        {
-          z.set_neg(1);
-        }
+        z.set_neg(x.neg());
       }
       else
       {
         z = usub(y, x);
-        if (y.neg())
-        {
-          z.set_neg(1);
-        }
+        z.set_neg(y.neg());
       }
     }
     else
