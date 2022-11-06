@@ -12,7 +12,7 @@ namespace mympf
     shrink_precision(y, 0);
     if (y.neg())
     {
-      y = uadd(y, const_1);
+      y = uadd(y, create(1));
     }
     y.set_neg(x.neg());
     return y;

@@ -11,6 +11,10 @@ namespace mympf
                        print_string(y).c_str(),
                        precision);
 
+    const mympz::bignum_t const_0 = mympz::create(0);
+    const mympz::bignum_t const_1 = mympz::create(1);
+    const mympz::bignum_t const_10 = mympz::create(10);
+
     float_t z;
     mympz::bignum_t xn = x.number;
     mympz::bignum_t yn = y.number;
@@ -29,7 +33,7 @@ namespace mympf
 
     mympz::bignum_t t;
     mympz::bignum_t p = res.second;
-    mympz::bignum_t q = mympz::const_0; // 为了补位
+    mympz::bignum_t q = const_0; // 为了补位
     bool qz = true;                     // 表示q为0
     bool e = false;                     // 表示随后需要对占用位的商1进行减法
 
@@ -57,7 +61,7 @@ namespace mympf
       d = expand_precision(p, b, c);
       if (mympz::ucmp(p, yn) < 0)
       {
-        p = mympz::mul(p, mympz::const_10);
+        p = mympz::mul(p, const_10);
         d++;
       }
 
@@ -80,9 +84,9 @@ namespace mympf
       if ((qz) && (d > 1))
       {
         e = true;
-        q = mympz::const_1;
+        q = const_1;
       }
-      t = mympz::exp(mympz::const_10, mympz::create(d));
+      t = mympz::exp(const_10, mympz::create(d));
       q = mympz::mul(q, t);
       q = mympz::uadd(q, res.first);
       mympf_dbgprint_fmt("qs = %s.\n", mympz::print_string(q).c_str());
@@ -99,7 +103,7 @@ namespace mympf
     z.precision = e ? count_digits(q) - 1 : count_digits(q);
     mympf_dbgprint_fmt("z.precision = %lu.\n", z.precision);
 
-    t = mympz::exp(mympz::const_10, mympz::create(z.precision));
+    t = mympz::exp(const_10, mympz::create(z.precision));
     result = mympz::mul(result, t);
     if (e)
     {

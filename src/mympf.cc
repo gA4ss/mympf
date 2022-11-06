@@ -11,11 +11,12 @@ namespace mympf
 
   size_t count_digits(const mympz::bignum_t &x)
   {
+    const mympz::bignum_t const_10 = mympz::create(10);
     size_t c = 0;
     mympz::bignum_t y = x;
-    while (mympz::ucmp(y, mympz::const_10) >= 0)
+    while (mympz::ucmp(y, const_10) >= 0)
     {
-      y = mympz::idiv(y, mympz::const_10);
+      y = mympz::idiv(y, const_10);
       c++;
     }
     c++;
@@ -74,9 +75,10 @@ namespace mympf
 
     size_t n =  current_precision - target_precision;
 
+    const mympz::bignum_t const_10 = mympz::create(10);
     while (n--)
     {
-      x = mympz::idiv(x, mympz::const_10);
+      x = mympz::idiv(x, const_10);
     }
 
     return (current_precision - target_precision);
@@ -143,18 +145,18 @@ namespace mympf
     }
     size_t i = 0, j = 0;
     mympz::bignum_t u = x, v = y;
-
+    const mympz::bignum_t const_10 = mympz::create(10);
     while (1)
     {
-      if (mympz::cmp(u, mympz::const_10) > 0)
+      if (mympz::cmp(u, const_10) > 0)
       {
-        u = mympz::idiv(u, mympz::const_10);
+        u = mympz::idiv(u, const_10);
         i++;
       }
 
-      if (mympz::cmp(v, mympz::const_10) > 0)
+      if (mympz::cmp(v, const_10) > 0)
       {
-        v = mympz::idiv(v, mympz::const_10);
+        v = mympz::idiv(v, const_10);
         j++;
       }
       else
@@ -167,7 +169,7 @@ namespace mympf
 
     while (k--)
     {
-      x = mympz::mul(x, mympz::const_10);
+      x = mympz::mul(x, const_10);
     }
 
     return (j - i);
@@ -182,9 +184,10 @@ namespace mympf
 
     size_t n = target_precision - current_precision;
 
+    const mympz::bignum_t const_10 = mympz::create(10);
     while (n--)
     {
-      x = mympz::mul(x, mympz::const_10);
+      x = mympz::mul(x, const_10);
     }
 
     return (target_precision - current_precision);
@@ -215,10 +218,11 @@ namespace mympf
     size_t s = x.precision, p = x.precision;
     mympz::bignum_t y = x.number;
     mympz::division_result_t qr;
+    const mympz::bignum_t const_10 = mympz::create(10);
 
     while(s)
     {
-      qr = mympz::div(y, mympz::const_10);
+      qr = mympz::div(y, const_10);
       if (!mympz::is_zero(qr.second))
       {
         break;

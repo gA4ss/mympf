@@ -9,6 +9,7 @@ namespace mympf
       return x;
 
     float_t y = x;
+    const float_t const_1 = create(1, 0);
     shrink_precision(y, 0);
     if (!y.neg())
     {

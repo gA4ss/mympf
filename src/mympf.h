@@ -30,7 +30,7 @@ namespace mympf
 
   } float_t;
 
-  float_t create(mympz::unit_t word, size_t precision, int neg = 0);
+  float_t create(mympz::unit_t word, size_t precision = 0, int neg = 0);
   float_t create(std::string str);
   float_t create(const mympz::bignum_t &number, size_t precision);
 
@@ -75,11 +75,11 @@ namespace mympf
   size_t expand_number(mympz::bignum_t &x, const mympz::bignum_t &y);
   size_t expand_precision(mympz::bignum_t &x, size_t current_precision, size_t target_precision);
 
-  void init();
-  extern float_t const_null;
-  extern float_t const_0;
-  extern float_t const_1;
-  extern float_t const_10;
+  // void init();
+  // extern float_t const_null;
+  // extern float_t const_0;
+  // extern float_t const_1;
+  // extern float_t const_10;
 
 } // namespace mympf
 

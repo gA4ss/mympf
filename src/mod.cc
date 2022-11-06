@@ -12,7 +12,7 @@ namespace mympf
 
     if (ucmp(x, y) == 0)
     {
-      return const_0;
+      return create(0);
     }
     else if (ucmp(x, y) < 0)
     {

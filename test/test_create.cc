@@ -8,7 +8,7 @@
 using namespace mympf;
 
 TEST(Mympf, Create) {
-  mympf::float_t x = const_0;
+  mympf::float_t x = create(0);
   std::string x_str;
 
   x = create("0.000000000000000000000000000000001");

@@ -15,12 +15,14 @@ namespace mympf
     float_t new_decimal_park = decimal_part(x);
     shrink_precision(new_decimal_park, precision + 1);
 
+    const mympz::bignum_t const_10 = mympz::create(10);
+
     // 新的尾数的末尾数
-    mympz::bignum_t k = mympz::mod(new_decimal_park.number, mympz::const_10);
+    mympz::bignum_t k = mympz::mod(new_decimal_park.number, const_10);
     v = mympz::get_word(k);
 
     // 去掉缩放时多加的判断位
-    new_decimal_park.number = idiv(new_decimal_park.number, mympz::const_10);
+    new_decimal_park.number = mympz::idiv(new_decimal_park.number, const_10);
     new_decimal_park.precision = precision;
     return new_decimal_park;
   }
@@ -30,7 +32,7 @@ namespace mympf
   {
     float_t y = decimal_part(x);
     size_t c = count_digits(y.number);
-    mympz::bignum_t e = mympz::exp(mympz::const_10, mympz::create(c));
+    mympz::bignum_t e = mympz::exp(mympz::create(10), mympz::create(c));
     mympz::bignum_t f = mympz::create(5);
     mympz::bignum_t n = mympz::idiv(y.number, e);
 
@@ -52,7 +54,10 @@ namespace mympf
 
     float_t y = integer_part(x);
 
+    //
     // 仅保留整数部分
+    //
+    const float_t const_1 = create(1);
     if (precision == 0)
     {
       if (__mantissa_is_greater_than_5(x))
