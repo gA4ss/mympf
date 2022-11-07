@@ -51,6 +51,14 @@ namespace mympf
       expand_precision(xn, x.precision, y.precision);
     }
 
+    // mympz::usub要保证x大于y否则结果会出错
+    if (mympz::ucmp(xn, yn) < 0)
+    {
+      mympz::bignum_t t = yn;
+      yn = xn;
+      xn = t;
+    }
+
     z.number = mympz::usub(xn, yn);
     z.precision = x.precision > y.precision ? x.precision : y.precision;
     shrink_zero_precision(z);

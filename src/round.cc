@@ -99,9 +99,10 @@ namespace mympf
     {
       float_t plus = create(1, effective_part.precision);
       y = uadd(y, plus);
-      y.set_neg(x.neg());
     }
 
+    // 符号与x保持一致
+    y.set_neg(x.neg());
     return y;
   }
 
